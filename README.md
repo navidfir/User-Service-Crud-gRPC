@@ -361,7 +361,7 @@ localhost:5247 user.UserService/CreateUser
 
 ---
 
-# Docker
+# Docker - Not Tested Due To Internet Blockout (Recommend To Use Traditional Dot Net Build)
 
 ## Build Image
 
