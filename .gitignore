@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+.idea/
+*.db
+*.db-shm
+*.db-wal
+app.db
+TestResults/
+coverage/

@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+option csharp_namespace = "Api.Protos";
+
+package users;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+service UserService {
+  
+  rpc CreateUser (CreateUserRequest) returns (UserResponse);
+
+  rpc UpdateUser (UpdateUserRequest) returns (UserResponse);
+
+  rpc GetUserById (GetUserByIdRequest) returns (UserResponse);
+
+  rpc GetUsers (GetUsersRequest) returns (GetUsersResponse);
+
+  rpc DeleteUser (DeleteUserRequest) returns (google.protobuf.Empty);
+
+  rpc HardDeleteUser (DeleteUserRequest) returns (google.protobuf.Empty);
+}
+
+message UserResponse {
+  string user_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string national_code = 4;
+  google.protobuf.Timestamp birth_date = 5;
+  string version = 6;
+}
+
+message CreateUserRequest {
+  string first_name = 1;
+  string last_name = 2;
+  string national_code = 3;
+  google.protobuf.Timestamp birth_date = 4;
+}
+
+message UpdateUserRequest {
+  string user_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string national_code = 4;
+  google.protobuf.Timestamp birth_date = 5;
+  string version = 6;
+}
+
+message GetUserByIdRequest {
+  string user_id = 1;
+}
+
+message DeleteUserRequest {
+  string user_id = 1;
+}
+
+message GetUsersRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+
+  string search = 3;
+
+  string sort_by = 4;
+
+  bool desc = 5;
+}
+
+message GetUsersResponse {
+  repeated UserResponse users = 1;
+
+  int32 total_count = 2;
+
+  int32 page = 3;
+
+  int32 page_size = 4;
+}
